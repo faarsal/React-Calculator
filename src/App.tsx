@@ -29,10 +29,15 @@ function App() {
         parseFloat(value2),
         operator.operator
       );
+      console.log(newValue);
       setResolvedValue(newValue);
       setOperatorFlag({ flag: false, operator: "+" });
+      setstate(inputBar + newText);
+    } else {
+      setstate(inputBar + newText);
+      const newValue = parseInt(inputBar + newText);
+      setResolvedValue(newValue);
     }
-    setstate(inputBar + newText);
   };
   let clearText = (newText: string) => {
     setResolvedValue(0);
@@ -45,16 +50,18 @@ function App() {
   let signInvert = (newText: string) => {
     if (inputBar[0] === "-") {
       setstate(inputBar.slice(1));
-      setOperatorFlag({ flag: true, operator: "+" });
+      // setOperatorFlag({ flag: true, operator: "+" });
     } else {
       setstate("-" + inputBar);
-      setOperatorFlag({ flag: true, operator: "-" });
+      // setOperatorFlag({ flag: true, operator: "-" });
     }
+    if (resolvedValue === 0) setResolvedValue(parseInt(inputBar) * -1);
+    else setResolvedValue(resolvedValue * -1);
   };
   let operatorAdd = (newOperator: string) => {
     if (operator.flag === true) return;
     let temp = resolvedValue;
-    if (resolvedValue === 0) temp = parseFloat(inputBar);
+    if (resolvedValue === 0) temp = 0;
 
     setResolvedValue(temp);
     setOperatorFlag({ flag: true, operator: newOperator });
@@ -62,6 +69,7 @@ function App() {
     setstate(inputBar + newOperator);
   };
   let operate = (value1: number, value2: number, op: string): number => {
+    console.log(value1, value2, op);
     if (op === "+") return value1 + value2;
     if (op === "-") return value1 - value2;
     if (op === "x") return value1 * value2;

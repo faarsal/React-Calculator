@@ -1,5 +1,4 @@
-import React, { FC } from "react";
-import { ICalculatorButtonProps } from "./../modals/ICalculatorButtonProps";
+import React from "react";
 
 let CalculatorInputBar = (props: any) => {
   let resultfontSize = "48px";
