@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import CalculatorInputBar from "./components/CalculatorInputBar";
+import NumericPad from "./components/NumericPad";
+import OperatorPad from "./components/OperatorPad";
 
 function App() {
+  const [inputBar, setstate] = useState("");
+  let appendText = (newText: string) => {
+    setstate(inputBar + newText);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CalculatorInputBar text={inputBar} />
+      <div className="App">
+        <NumericPad changeFunction={appendText} />
+        <OperatorPad />
+      </div>
+    </>
   );
 }
 

@@ -1,5 +1,26 @@
+.calculatorButton {
+  padding: 32px;
+  background-color: #000000;
+  color: white;
+  font-size: 32px;
+  border: none;
+  width: 100px;
+}
+.calculatorButton:hover {
+  background-color: rgb(54, 54, 54) !important;
+}
+.calculatorInput {
+  width: 400px;
+  height: 100px;
+  background-color: #000000;
+  color: white;
+  font-size: 48px;
+}
+
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 300px 100px;
+  grid-template-rows: 80px 200px;
 }
 
 .App-logo {
