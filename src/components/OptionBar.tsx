@@ -2,31 +2,34 @@ import React from "react";
 import CalculatorButton from "./CalculatorButton";
 import { ICalculatorButtonProps } from "./../modals/ICalculatorButtonProps";
 
-let OperatorPad = (props: any) => {
+let OptionBar = (props: any) => {
   let ButtonsArray: ICalculatorButtonProps[] = [
     {
-      text: "/",
+      text: "C",
+      style: {
+        backgroundColor: "green",
+      },
+      changeFunction: props.clearText,
+    },
+    {
+      text: "+/-",
+      style: {
+        backgroundColor: "green",
+      },
+      changeFunction: props.signInvert,
+    },
+    {
+      text: "%",
       style: {
         backgroundColor: "green",
       },
     },
     {
-      text: "x",
+      text: ".",
       style: {
         backgroundColor: "green",
       },
-    },
-    {
-      text: "-",
-      style: {
-        backgroundColor: "green",
-      },
-    },
-    {
-      text: "+",
-      style: {
-        backgroundColor: "green",
-      },
+      changeFunction: props.delText,
     },
   ];
   return (
@@ -37,9 +40,8 @@ let OperatorPad = (props: any) => {
             <CalculatorButton
               text={button.text}
               style={button.style}
-              changeFunction={props.changeFunction}
+              changeFunction={button.changeFunction}
             />
-            <br />
           </>
         );
       })}
@@ -47,4 +49,4 @@ let OperatorPad = (props: any) => {
   );
 };
 
-export default OperatorPad;
+export default OptionBar;
